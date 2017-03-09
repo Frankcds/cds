@@ -1,0 +1,12 @@
+/*
+	可以使用@import导入外部样式
+	可以是.less文件,也可以是.css文件
+ */
+@import "import"; //导入import.less文件，后缀名可以省略
+@import "style.css";
+
+@color:red;
+#d1{
+	color:@color;
+	.setBackgroundColor;
+}

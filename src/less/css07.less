@@ -1,0 +1,67 @@
+//嵌套规则
+#d1{
+	color:red;
+	>.c1{
+		background-color:yellow;
+	}
+}
+
+//以嵌套的方式便携层叠央视，代码更简单更直观
+#d1{
+	h1{
+		font-size: 25px;
+		font-weight: bold;
+	}
+	p{
+		font-size: 12px;
+		a{
+			text-decoration: none;
+			&:hover{//这里的&相当于是this,可以省略
+				color: red;
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+
+//继承extend，两种写法：在规则内、在选择器后面
+.inline{
+	color:red;
+	background-color: #ccc;
+}
+nav ul{
+	font-size:25px;
+	&:extend(.inline);
+	// :extend(.inline);//报错，继承时不能省略&
+}
+h1:extend(.inline){
+	font-weight: bold;
+}
+
+//多继承
+.hello{
+	color:blue;
+}
+.world{
+	background-color: yellow;
+}
+#intay{
+	font-size: 12px;
+	&:extend(.hello,.world);//用逗号隔开
+}
+
+//继承所有：extend all
+.a{
+	color:red;
+}
+.a .b{
+	background-color:yellow;
+}
+.c .a{
+	font-weight: bold;
+}
+h2{
+	font-size: 12;
+	&:extend(.a all);//凡事包含.a的选择器都继承
+}
